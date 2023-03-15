@@ -13,15 +13,17 @@ const PORT = process.env.PORT || 3500;
 
 const serveFile = async(filePath, contentType, response) => {
   try {
-    const rawData = await fsPromises.readFile(filePath, 'utf8');
-    const data = contentType === 'application/json' ?
-      JSON.parse(rawData) : rawData;
-    response.writeHead(200, {'Content-Type': contentType});
+    const rawData = await fsPromises.readFile(filePath, 
+      !contentType.includes('image') ? 'utf8' : ''); // Not transform in utf8 if image
+    const data = contentType === 'application/json' ? JSON.parse(rawData) : rawData;
+    response.writeHead(
+      filePath.includes('404.html') ? 400 : 200, {'Content-Type': contentType});
     response.end(
       contentType === 'application/json' ? JSON.stringify(data) : data
     );
   } catch(err) {
     console.log(err);
+    myEmitter.emit('log', `${err.name}: ${err.message}`, 'errLog.txt')
     response.statusCode = 500;
     response.end();
   }
@@ -29,6 +31,7 @@ const serveFile = async(filePath, contentType, response) => {
 
 const server = http.createServer((req, res) => {
   console.log(req.url, req.method);
+  myEmitter.emit('log', `${req.url}\t${req.method}`, 'reqLog.txt')
 
   const extension = path.extname(req.url);
 
@@ -98,5 +101,4 @@ server.listen(PORT, () => {
 })
 
 
-// myEmitter.on('log', (msg) => logEvents(msg) );
-// myEmitter.emit('log', 'Log event emitted!')
+myEmitter.on('log', (msg) => logEvents(msg) );
