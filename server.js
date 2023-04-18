@@ -32,9 +32,12 @@ app.use(express.urlencoded({ extended: false }));
 // built-in middleware for json
 app.use(express.json());
 
-// serve static files
-app.use(express.static(path.join(__dirname, '/public')));
+// serve static files (css, img..)
+app.use('/', express.static(path.join(__dirname, '/public')));
+app.use('/subdir', express.static(path.join(__dirname, '/public')));
 
+
+app.use('/subdir', require('./routes/subdir'));
 
 app.get('^/$|index(.html)?', (req, res) => {
   res.sendFile(path.join( __dirname, 'views', 'index.html'))
@@ -95,6 +98,6 @@ app.listen(PORT, () => {
 
 // DEFINITIONS
 // Middleware is anything beteween the request and the response
-// app.use() is most of the time used by middleware. it doesn't accept regex
+// app.use() is most of the time used by middleware. 
 
-// app.get() & app.all() are used for the routes. It accepts regex
+// app.get() & app.all() are used for the routes. 
