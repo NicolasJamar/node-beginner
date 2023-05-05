@@ -26,12 +26,12 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2023-04-25T12:11:45.442Z",
-    "modified": "2023-05-05T07:58:35.861Z",
+    "modified": "2023-05-05T14:04:36.515Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{ \"user\": \"Walt\", \"pwd\": \"pass1234\"}",
+      "raw": "{\"user\": \"Walt\", \"pwd\": \"pass1234\"}",
       "form": []
     },
     "tests": []
@@ -46,6 +46,20 @@
     "sortNum": 0,
     "created": "2023-04-25T12:11:45.442Z",
     "modified": "2023-05-05T13:13:55.221Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "d486078b-2408-4452-b8c4-8a8623851c6a",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3500/logout",
+    "url": "http://localhost:3500/logout",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-25T12:11:45.442Z",
+    "modified": "2023-05-05T14:01:17.984Z",
     "headers": [],
     "params": [],
     "tests": []

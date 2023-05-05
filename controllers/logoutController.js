@@ -15,7 +15,7 @@ const handleLogout = async (req, res) => {
 
   const cookies = req.cookies;
   if(!cookies?.jwt){ //if we don't have cookie and jwt property in it
-    res.sendStatus(204) //No content to send
+    return res.sendStatus(204) //No content to send
   }
   const refreshToken = cookies.jwt;
 
