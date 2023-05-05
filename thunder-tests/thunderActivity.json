@@ -37,6 +37,20 @@
     "tests": []
   },
   {
+    "_id": "be9320d9-4968-40d4-9acd-8e689e97b25b",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3500/refresh",
+    "url": "http://localhost:3500/refresh",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-25T12:11:45.442Z",
+    "modified": "2023-05-05T13:13:55.221Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
     "_id": "c2bd01dd-196b-4879-ba1e-d6ffeeff6c0a",
     "colId": "history",
     "containerId": "",
