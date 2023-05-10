@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "_id": "3e1badbc-d63e-4bfb-b802-ba55f90d2a05",
+    "colName": "Auth",
+    "created": "2023-05-10T13:19:00.595Z",
+    "sortNum": 10000,
+    "folders": []
+  },
+  {
+    "_id": "69111618-6f7c-40cd-842e-911bb7615f95",
+    "colName": "Employees API",
+    "created": "2023-05-10T13:23:01.406Z",
+    "sortNum": 20000,
+    "folders": []
+  }
+]

@@ -18,7 +18,7 @@ const handleLogin = async(req, res) => {
   // evaluate password
   const match = await bcrypt.compare(pwd, foundUser.password)
   if(match) {
-    const roles = Object.values(foundUser.roles)
+    const roles = Object.values(foundUser.roles);
     // create JWTs
     const accessToken = jwt.sign(
       { "UserInfo" : {
@@ -29,6 +29,7 @@ const handleLogin = async(req, res) => {
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: '30s' }
     );
+    // the refreshToken is only there to verify that you can get a new accessToken
     const refreshToken = jwt.sign(
       { "username": foundUser.username },
       process.env.REFRESH_TOKEN_SECRET,
