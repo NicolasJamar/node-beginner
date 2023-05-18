@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  usertname: {
+  username: {
     type: String,
     require: true
   },
@@ -15,7 +15,7 @@ const userSchema = new Schema({
     Admin: Number
   },
   password: {
-    typr: String,
+    type: String,
     required: true
   },
   refreshToken: String
