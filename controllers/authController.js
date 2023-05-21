@@ -21,7 +21,7 @@ const handleLogin = async(req, res) => {
         }
       },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: '30s' }
+      { expiresIn: '60s' }
     );
     // the refreshToken is only there to verify that you can get a new accessToken
     const refreshToken = jwt.sign(
