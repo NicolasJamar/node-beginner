@@ -2,7 +2,7 @@ const User = require('../model/User');
 
 const getAllUsers = async(req, res) => {
   const allUsers = await User.find({});
-  if(!allUsers) res.status(204).json('message': 'there is no user yet')
+  if(!allUsers) res.status(204).json({'message': 'there is no user yet'})
   res.json(allUsers)
 }
 
