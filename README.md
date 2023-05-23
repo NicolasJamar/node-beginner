@@ -23,4 +23,4 @@ There are 3 types of users with different power:
 
 [All the ressources for this tutorial are here](https://github.com/gitdagray/node_js_resources)
 
-To use this back-ed as API : https://famous-simple-hippodraco.glitch.me/
+To use this back-end as API : https://famous-simple-hippodraco.glitch.me/
