@@ -34,7 +34,7 @@ const handleLogin = async(req, res) => {
     const result = await foundUser.save();
     console.log(result);
       // secure: true,
-    res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: "None", maxAge: 24*60*60*1000 }) //with httpOnly, the cookie is not available by the JS
+    res.cookie('jwt', refreshToken, { httpOnly: true, secure: true, sameSite: "None", maxAge: 24*60*60*1000 }) //with httpOnly, the cookie is not available by the JS
     res.json({ accessToken })
   } else {
     res.sendStatus(401).json({'message': err.message})
