@@ -21,6 +21,21 @@ There are 3 types of users with different power:
 - Editor
 - Admin
 
-[All the ressources for this tutorial are here](https://github.com/gitdagray/node_js_resources)
+## API
 
-To use this back-end as API : https://famous-simple-hippodraco.glitch.me/
+To use this back-end as API : https://famous-simple-hippodraco.glitch.me/ (you need credentials to use it)
+
+### Routes
+
+* `/`
+* `/register`
+* `/auth` to log in
+* `/refresh` to refresh access tokken
+* `/logout`
+* `/users` to get all users
+* `/employees` to get all employees
+* `/employees/:id` to get one employee by id
+
+---
+
+[All the ressources for this tutorial are there](https://github.com/gitdagray/node_js_resources)
