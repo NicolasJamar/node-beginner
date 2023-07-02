@@ -12,7 +12,7 @@ const handleLogin = async(req, res) => {
   // evaluate password
   const match = await bcrypt.compare(pwd, foundUser.password)
   if(match) {
-    const roles = Object.values(foundUser.roles);
+    const roles = Object.values(foundUser.roles).filter( role => role !== undefined );
     // create JWTs
     const accessToken = jwt.sign(
       { "UserInfo" : {
@@ -35,7 +35,7 @@ const handleLogin = async(req, res) => {
     console.log(result);
       // secure: true,
     res.cookie('jwt', refreshToken, { httpOnly: true, secure: true, sameSite: "None", maxAge: 24*60*60*1000 }) //with httpOnly, the cookie is not available by the JS
-    res.json({ accessToken })
+    res.json({ roles, accessToken })
   } else {
     res.sendStatus(401).json({'message': err.message})
   }

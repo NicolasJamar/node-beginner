@@ -1,0 +1,114 @@
+{
+    "_id": "69111618-6f7c-40cd-842e-911bb7615f95",
+    "colName": "Employees API",
+    "created": "2023-05-10T13:23:01.406Z",
+    "sortNum": 20000,
+    "folders": [],
+    "requests": [
+        {
+            "_id": "eeb0650a-aca1-4976-ab98-6c37c844a92b",
+            "colId": "69111618-6f7c-40cd-842e-911bb7615f95",
+            "containerId": "",
+            "name": "http://localhost:3500/employees",
+            "url": "http://localhost:3500/employees",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-05-10T13:23:10.750Z",
+            "modified": "2023-05-21T21:24:15.248Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJ1c2VybmFtZSI6IndhbHQxIiwicm9sZXMiOlsyMDAxLDE5ODQsNTE1MF19LCJpYXQiOjE2ODQ3MDQyMjMsImV4cCI6MTY4NDcwNDI4M30.ZU8_VjG61vad8VxvvvoaEZTl0lgN8rZsVZ9Fw8OKIY0"
+            },
+            "tests": []
+        },
+        {
+            "_id": "e0bb451d-ccdb-4a7d-ad20-a334c633bd37",
+            "colId": "69111618-6f7c-40cd-842e-911bb7615f95",
+            "containerId": "",
+            "name": "add an employee",
+            "url": "http://localhost:3500/employees",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-05-10T13:23:20.422Z",
+            "modified": "2023-05-21T21:27:23.547Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\"firstname\":\"Nico\", \"lastname\":\"Jam\"}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJ1c2VybmFtZSI6IndhbHQxIiwicm9sZXMiOlsyMDAxLDE5ODQsNTE1MF19LCJpYXQiOjE2ODQ3MDQ0MjQsImV4cCI6MTY4NDcwNDQ4NH0.Sk88MOBddD9thpEi4tAwXVif0bQRl_vjs9nPEd39x8E"
+            },
+            "tests": []
+        },
+        {
+            "_id": "e4c9f82e-902b-481a-b618-292f5a88190c",
+            "colId": "69111618-6f7c-40cd-842e-911bb7615f95",
+            "containerId": "",
+            "name": "http://localhost:3500/employees",
+            "url": "http://localhost:3500/employees",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2023-05-10T13:33:14.606Z",
+            "modified": "2023-05-21T21:24:02.743Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\"id\": \"646a8b417ccd34310a6f609b\"}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJ1c2VybmFtZSI6IndhbHQxIiwicm9sZXMiOlsyMDAxLDE5ODQsNTE1MF19LCJpYXQiOjE2ODQ3MDQyMjMsImV4cCI6MTY4NDcwNDI4M30.ZU8_VjG61vad8VxvvvoaEZTl0lgN8rZsVZ9Fw8OKIY0"
+            },
+            "tests": []
+        },
+        {
+            "_id": "672f7509-3ebc-4b03-b9ad-81fe4e231755",
+            "colId": "69111618-6f7c-40cd-842e-911bb7615f95",
+            "containerId": "",
+            "name": "get an employee by id",
+            "url": "http://localhost:3500/employees/646a8b417ccd34310a6f609b",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2023-05-21T21:17:53.925Z",
+            "modified": "2023-05-21T21:22:57.473Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJ1c2VybmFtZSI6IndhbHQxIiwicm9sZXMiOlsyMDAxLDE5ODQsNTE1MF19LCJpYXQiOjE2ODQ3MDQxMzUsImV4cCI6MTY4NDcwNDE5NX0.NZ6xY4fa7X-qlg02jRyTkSIFNebBdAqfDziWGPld4Ds"
+            },
+            "tests": []
+        },
+        {
+            "_id": "45a164ca-ce74-4cb4-9b66-8d28ea3ba816",
+            "colId": "69111618-6f7c-40cd-842e-911bb7615f95",
+            "containerId": "",
+            "name": "Update an employee by id",
+            "url": "http://localhost:3500/employees/",
+            "method": "PUT",
+            "sortNum": 17500,
+            "created": "2023-05-21T21:25:39.327Z",
+            "modified": "2023-05-21T21:29:32.215Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\"id\": \"646a8cbba6601c5199c88ad2\", \"firstname\": \"Luc\"}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJ1c2VybmFtZSI6IndhbHQxIiwicm9sZXMiOlsyMDAxLDE5ODQsNTE1MF19LCJpYXQiOjE2ODQ3MDQ1NDgsImV4cCI6MTY4NDcwNDYwOH0.JQTVnwym3ps1gf1Rr17HpA7UtDRRi27yHTwfXHZOwPY"
+            },
+            "tests": []
+        }
+    ]
+}
