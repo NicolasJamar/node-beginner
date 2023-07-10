@@ -21,13 +21,13 @@ const handleLogin = async(req, res) => {
         }
       },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: '60s' }
+      { expiresIn: '10m' }
     );
     // the refreshToken is only there to verify that you can get a new accessToken
     const refreshToken = jwt.sign(
       { "username": foundUser.username },
       process.env.REFRESH_TOKEN_SECRET,
-      { expiresIn: '1d' }
+      { expiresIn: '1h' }
     );
     // Saving refreshToken with current user
     foundUser.refreshToken = refreshToken;
@@ -35,7 +35,7 @@ const handleLogin = async(req, res) => {
     console.log(result);
       // secure: true,
     res.cookie('jwt', refreshToken, { httpOnly: true, secure: true, sameSite: "None", maxAge: 24*60*60*1000 }) //with httpOnly, the cookie is not available by the JS
-    res.json({ roles, accessToken })
+    res.json({ accessToken })
   } else {
     res.sendStatus(401).json({'message': err.message})
   }
