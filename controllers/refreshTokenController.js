@@ -39,10 +39,12 @@ const handleRefreshToken = async(req, res) => {
     refreshToken, 
     process.env.REFRESH_TOKEN_SECRET,
     async (err, decoded) => {
-      //if the token is expired we reassign new token
+      //if the token is expired we reassign new token(s)
       if(err) {
+        console.log('expired token');
         foundUser.refreshToken = [...newRefreshTokenArray];
         const result = await foundUser.save();
+        console.log('expired token res', result);
       }
       if(err || foundUser.username !== decoded.username) return res.sendStatus(403); // invalid token
       
@@ -55,7 +57,7 @@ const handleRefreshToken = async(req, res) => {
           }
         },
         process.env.ACCESS_TOKEN_SECRET,
-        {expiresIn: '30s'}
+        {expiresIn: '10s'}
       )
 
       //we send a new refreshToken too
@@ -67,6 +69,7 @@ const handleRefreshToken = async(req, res) => {
       // Saving refreshToken with current user
       foundUser.refreshToken = [...newRefreshTokenArray , newRefreshToken];
       const result = await foundUser.save();
+      console.log(result);
 
       //we store the refreshToken in a cookie httpOnly
       res.cookie('jwt', newRefreshToken, { httpOnly: true, secure: true, sameSite: "None", maxAge: 24*60*60*1000 }) //with httpOnly, the cookie is not available by the JS

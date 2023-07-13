@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 
 const handleLogin = async(req, res) => {
   const cookies = req.cookies;
+  console.log(`cookie available at login ${JSON.stringify(cookies.jwt)}`);
   const { user, pwd } = req.body;
   if(!user || !pwd ){
     res.status(400).json({ 'message': 'Username and password are required' })
@@ -22,7 +23,7 @@ const handleLogin = async(req, res) => {
         }
       },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: '10m' }
+      { expiresIn: '10s' }
     );
     // the refreshToken is only there to verify that you can get a new accessToken
     const newRefreshToken = jwt.sign(
@@ -31,13 +32,30 @@ const handleLogin = async(req, res) => {
       { expiresIn: '1d' }
     );
 
-    const newRefreshTokenArray = 
+    let newRefreshTokenArray = 
       !cookies?.jwt
         ? foundUser.refreshToken
         : foundUser.refreshToken.filter( rt => rt !== cookies.jwt)
     
     //we delete the old cookie on every auth
     if(cookies?.jwt) {
+      /* 
+      Scenario added here: 
+          1) User logs in but never uses RT and does not logout 
+          2) RT is stolen
+          3) If 1 & 2, reuse detection is needed to clear all RTs when user logs in
+      */
+      const refreshToken = cookies.jwt;
+      const foundToken = await User.findOne({ refreshToken }).exec();
+      
+      // Detected refresh token reuse!
+      //NB: when a refreshToken is used, it is deleted in the DB
+      if(!foundToken) {
+        console.log('attempted refreshToken reuse at login');
+        //clear all refreshToken
+        newRefreshTokenArray = [];
+      }
+      
       res.clearCookie('jwt', { httpOnly: true, sameSite: "None", secure: true })
     }
 

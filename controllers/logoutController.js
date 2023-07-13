@@ -11,18 +11,18 @@ const handleLogout = async (req, res) => {
   if(!cookies?.jwt){ //if we don't have cookie and jwt property in it
     return res.sendStatus(204) //No content to send
   }
-  const refreshTokenCookie = cookies.jwt;
+  const refreshToken = cookies.jwt;
 
   //Is refreshToken in db?
-  const foundUser = await User.findOne({ refreshTokenCookie }).exec();
+  const foundUser = await User.findOne({ refreshToken }).exec();
   if(!foundUser) { 
     res.clearCookie('jwt', { httpOnly: true, sameSite: "None", secure: true })
     return res.sendStatus(204);
   } 
   // Delete refreshToken in db
-  foundUser.refreshToken = foundUser.refreshToken.filter( rt => rt !== refreshTokenCookie);
+  foundUser.refreshToken = foundUser.refreshToken.filter( rt => rt !== refreshToken);
   const result = await foundUser.save();
-  console.log(result);
+  console.log("logout", result);
 
   res.clearCookie('jwt', { httpOnly: true, sameSite: "None", secure: true })
   res.sendStatus(204);
